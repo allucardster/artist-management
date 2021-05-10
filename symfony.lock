@@ -274,6 +274,9 @@
     "symfony/mime": {
         "version": "v4.4.22"
     },
+    "symfony/options-resolver": {
+        "version": "v4.4.20"
+    },
     "symfony/orm-pack": {
         "version": "v2.1.0"
     },
