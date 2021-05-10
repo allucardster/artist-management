@@ -35,6 +35,10 @@ DB_PORT=5432              # Database port
 ```sh
 :~$ make composer-install
 ```
+- Execute database migrations
+```sh
+:~$ make database-migrations
+```
 
 Contributors
 ============
