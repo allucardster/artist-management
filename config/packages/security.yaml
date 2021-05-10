@@ -1,0 +1,40 @@
+security:
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        users_in_memory:
+            memory:
+                users: #TODO: Create users in database ^^ (admin pass: admin, everything else: passwd123)
+                    admin:
+                        password: '$argon2id$v=19$m=65536,t=4,p=1$7DeGRqYi25FT9RDcNgCZ5w$G1zPXds4jdIc/UR8GEbJ3vyucb8FXsW3yXAlsSpDssg'
+                        roles: ['ROLE_ADMIN']
+                    user_1:
+                        password: '$argon2id$v=19$m=65536,t=4,p=1$YD1lBMZDmvhmrbND5NAJIg$Ajom79QxziYqx28o5Sy8oRQ2oNZhlsOBNhygoLyKRD0'
+                        roles: ['ROLE_USER']
+                    user_2:
+                        password: '$argon2id$v=19$m=65536,t=4,p=1$udKur5CenYy6fETbkf0Ifw$XtBNgeZS4/Vt+iMnDP9P496tuT4vBZL3WRdW0XC+Gps'
+                        roles: ['ROLE_USER']
+                    user_3:
+                        password: '$argon2id$v=19$m=65536,t=4,p=1$t5aQZsSucHJYEOFvQt47sw$U+oV+Bgc/v070Kruu18HlptDX9rHrpYTlIVPOpYpMvo'
+                        roles: ['ROLE_USER']
+    encoders:
+        # this internal class is used by Symfony to represent in-memory users
+        Symfony\Component\Security\Core\User\User: 'auto'
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: lazy
+            provider: users_in_memory
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        # - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/profile, roles: ROLE_USER }
