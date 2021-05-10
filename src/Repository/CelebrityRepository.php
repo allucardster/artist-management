@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Celebrity;
 use App\Request\CreateCelebrityRequest;
+use App\Request\UpdateCelebrityRequest;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
@@ -28,6 +29,33 @@ class CelebrityRepository extends ServiceEntityRepository
         $celebrity->setBio($request->getBio());
 
         $this->getEntityManager()->persist($celebrity);
+        $this->getEntityManager()->flush();
+
+        return $celebrity;
+    }
+
+    /**
+     * @param UpdateCelebrityRequest $request
+     * @param Celebrity $celebrity
+     * @return Celebrity
+     * @throws ORMException
+     */
+    public function update(UpdateCelebrityRequest $request, Celebrity $celebrity): Celebrity
+    {
+        if ($name = $request->getName()) {
+            $celebrity->setName($name);
+        }
+
+        if ($birthday = $request->getBirthday()) {
+            $celebrity->setBirthday($birthday);
+        }
+
+        if ($bio = $request->getBio()) {
+            $celebrity->setBio($bio);
+        }
+
+        $this->getEntityManager()->persist($celebrity);
+        $this->getEntityManager()->flush();
 
         return $celebrity;
     }
