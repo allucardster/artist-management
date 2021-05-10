@@ -9,9 +9,11 @@ down: ## stop all containers
 	docker-compose down
 composer-install: ## make composer-install
 	docker-compose exec php sh -c 'composer install'
-database-migrations: ## execute database migrations
-	docker-compose exec php sh -c './bin/console doctrine:migrations:migrate --no-interaction'
-database-reset: ## drop, create and execute database migrations
+database-init: ## init database
 	docker-compose exec php sh -c './bin/console doctrine:database:drop --if-exists --force'
 	docker-compose exec php sh -c './bin/console doctrine:database:create'
 	docker-compose exec php sh -c './bin/console doctrine:migrations:migrate --no-interaction'
+database-migrations: ## execute database migrations
+	docker-compose exec php sh -c './bin/console doctrine:migrations:migrate --no-interaction'
+jwt-generate-keypair: ## Generate ssl keys for jwt
+	docker-compose exec php sh -c './bin/console lexik:jwt:generate-keypair --overwrite --no-interaction'

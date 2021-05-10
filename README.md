@@ -17,16 +17,6 @@ Technology Stack
 
 Development Setup
 =================
-- Check `.env` file and adjust `artist-management project` section according your needs:
-```
-###> artist-management project ###
-APP_PORT=8000             # Default application port (i.e. http://localhost:8000)
-DB_USER=root              # Database username
-DB_PASS=root              # Database password
-DB_NAME=artist_management # Database name
-DB_PORT=5432              # Database port
-###< artist-management project ###
-```
 - Init docker containers
 ```sh
 :~$ make up
@@ -35,9 +25,13 @@ DB_PORT=5432              # Database port
 ```sh
 :~$ make composer-install
 ```
-- Execute database migrations
+- Init database (drop and create database. execute migrations )
 ```sh
-:~$ make database-migrations
+:~$ make database-init
+```
+- Generate JWT SSL keys
+```sh
+:~$ make jwt-generate-keypair
 ```
 
 Contributors
