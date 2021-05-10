@@ -24,11 +24,12 @@ class CreateRepresentativeRequest
     /**
      * @Assert\NotNull()
      * @Assert\Type(type="array")
-     * @Assert\Count(min = 1)
+     * @Assert\Count(min=1, max=5)
      * @Assert\All(
      *     @Assert\NotBlank(),
      *     @Assert\Email()
      * )
+     * @Assert\Unique()
      * @Serializer\Type("array<string>")
      *
      * @var array
