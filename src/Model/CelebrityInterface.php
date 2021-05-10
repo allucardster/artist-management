@@ -4,7 +4,7 @@ namespace App\Model;
 
 use DateTimeImmutable;
 
-interface CelebrityInterface
+interface CelebrityInterface extends EntityInterface
 {
     public function getName(): string;
 
@@ -16,5 +16,5 @@ interface CelebrityInterface
 
     public function getBio(): string;
 
-    public function setBio(): string;
+    public function setBio(string $bio): void;
 }

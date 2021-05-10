@@ -4,7 +4,7 @@ namespace App\Model;
 
 use App\Enum\RepresentativeType;
 
-interface CelebrityRepresentativeInterface
+interface CelebrityRepresentativeInterface extends EntityInterface
 {
     public function getCelebrity(): CelebrityInterface;
 

@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-interface RepresentativeInterface
+interface RepresentativeInterface extends EntityInterface
 {
     public function getName(): string;
 

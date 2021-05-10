@@ -8,7 +8,8 @@ git \
 zlib1g-dev \
 libzip-dev \
 libicu-dev \
-g++
+g++ \
+libpq-dev
 
 # Use the default production configuration
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
@@ -22,6 +23,12 @@ RUN docker-php-ext-install zip
 
 # Enable opcache
 RUN docker-php-ext-enable opcache
+
+# Install pdo
+RUN docker-php-ext-install pdo
+
+# Install postgres
+RUN docker-php-ext-install pdo_pgsql
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer \
