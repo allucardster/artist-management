@@ -12,7 +12,7 @@ interface RepresentativeInterface extends EntityInterface
 
     public function setCompany(string $company): void;
 
-    public function getEmails(array $emails): array;
+    public function getEmails(): array;
 
     public function setEmails(array $emails): void;
 }
