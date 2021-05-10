@@ -4,9 +4,9 @@ namespace App\Entity;
 
 use App\Doctrine\Entity\Traits\IdTrait;
 use App\Model\CelebrityInterface;
+use App\Repository\CelebrityRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
-use App\Repository\CelebrityRepository;
 
 /**
  * Class Celebrity

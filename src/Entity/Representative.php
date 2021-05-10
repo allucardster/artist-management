@@ -4,8 +4,8 @@ namespace App\Entity;
 
 use App\Doctrine\Entity\Traits\IdTrait;
 use App\Model\RepresentativeInterface;
-use Doctrine\ORM\Mapping as ORM;
 use App\Repository\RepresentativeRepository;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class Representative
@@ -34,7 +34,7 @@ class Representative implements RepresentativeInterface
     private string $company;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="json")
      *
      * @var array
      */

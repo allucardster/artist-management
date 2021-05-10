@@ -14,7 +14,7 @@ interface CelebrityRepresentativeInterface extends EntityInterface
 
     public function setRepresentative(RepresentativeInterface $representative): void;
 
-    public function getType(): RepresentativeType;
+    public function getTypes(): array;
 
-    public function setType(RepresentativeType $representativeType): void;
+    public function setTypes(array $types): void;
 }
