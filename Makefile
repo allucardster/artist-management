@@ -9,3 +9,5 @@ down: ## stop all containers
 	docker-compose down
 composer-install: ## make composer-install
 	docker-compose exec php sh -c 'composer install'
+database-migrations: ## execute database migrations
+	docker-compose exec php sh -c './bin/console doctrine:migrations:migrate --no-interaction'
