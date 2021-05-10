@@ -21,6 +21,7 @@ class CelebrityRepository extends ServiceEntityRepository
      * @param CreateCelebrityRequest $request
      * @return Celebrity
      * @throws ORMException
+     * @throws OptimisticLockException
      */
     public function create(CreateCelebrityRequest $request): Celebrity
     {
@@ -40,6 +41,7 @@ class CelebrityRepository extends ServiceEntityRepository
      * @param Celebrity $celebrity
      * @return Celebrity
      * @throws ORMException
+     * @throws OptimisticLockException
      */
     public function update(UpdateCelebrityRequest $request, Celebrity $celebrity): Celebrity
     {
