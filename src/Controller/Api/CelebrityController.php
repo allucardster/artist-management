@@ -19,7 +19,7 @@ class CelebrityController
     /**
      * @Rest\Get("/list")
      * @Rest\View()
-     * 
+     *
      * @param PaginationQuery $paginationQuery
      * @param CelebrityRepository $repository
      * @return PaginationResult
