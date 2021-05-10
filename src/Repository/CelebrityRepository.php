@@ -6,6 +6,7 @@ use App\Entity\Celebrity;
 use App\Request\CreateCelebrityRequest;
 use App\Request\UpdateCelebrityRequest;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -58,5 +59,16 @@ class CelebrityRepository extends ServiceEntityRepository
         $this->getEntityManager()->flush();
 
         return $celebrity;
+    }
+
+    /**
+     * @param Celebrity $celebrity
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
+    public function delete(Celebrity $celebrity): void
+    {
+        $this->getEntityManager()->remove($celebrity);
+        $this->getEntityManager()->flush();
     }
 }

@@ -8,6 +8,7 @@ use App\Pagination\PaginationResult;
 use App\Repository\CelebrityRepository;
 use App\Request\CreateCelebrityRequest;
 use App\Request\UpdateCelebrityRequest;
+use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\View\View;
@@ -82,6 +83,22 @@ class CelebrityController
         }
 
         $repository->update($request, $celebrity);
+
+        return View::create(null, Response::HTTP_NO_CONTENT);
+    }
+
+    /**
+     * @Rest\Delete("/{id}", requirements={"id"="[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"})
+     *
+     * @param Celebrity $celebrity
+     * @param CelebrityRepository $repository
+     * @return View
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
+    public function delete(Celebrity $celebrity, CelebrityRepository $repository): View
+    {
+        $repository->delete($celebrity);
 
         return View::create(null, Response::HTTP_NO_CONTENT);
     }
