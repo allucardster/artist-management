@@ -1,5 +1,6 @@
 Artist Management
 =================
+Celebrity management API with database update logs feature.
 
 Requirements
 ============
@@ -33,6 +34,20 @@ Development Setup
 ```sh
 :~$ make jwt-generate-keypair
 ```
+
+Documentation
+=============
+- [API Docs](https://documenter.getpostman.com/view/5093068/TzRShTC2)
+
+About Database Logs Feature
+===========================
+The database logs feature was implemented using the [Doctrine Lifecycle Subscribers](https://symfony.com/doc/current/doctrine/events.html#doctrine-lifecycle-subscribers) because the `postUpdate` event allow get the required information (entity, changes and security users) in a single place.
+
+In other hand, there are some pitfalls with this implementation:
+- The subscriber resolve all the information and in case it fails, the entire process fails. (i.e update a celebrity)
+- The `logs` data is stored in the same database where the changes are performed.
+
+A way to deal with this is try to use some `queue` to process the subscriber data afterwards. Also, should be good move all the logs process (create, list etc) into a `microservice`.
 
 Contributors
 ============
