@@ -3,6 +3,7 @@
 namespace App\EventListener;
 
 use App\Entity\Celebrity;
+use App\Entity\CelebrityRepresentative;
 use App\Entity\Log;
 use App\Entity\Representative;
 use App\Model\CelebrityInterface;
@@ -96,6 +97,10 @@ class DatabaseActivitySubscriber implements EventSubscriber
 
         if ($entity instanceof Representative) {
             return $this->em->getClassMetadata(Representative::class)->getTableName();;
+        }
+
+        if ($entity instanceof CelebrityRepresentative) {
+            return $this->em->getClassMetadata(CelebrityRepresentative::class)->getTableName();
         }
 
         return null;
