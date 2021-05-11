@@ -43,8 +43,8 @@ class UniqueCelebrityRepresentativeValidator extends ConstraintValidator
         }
 
         $this->context
-            ->buildViolation('A celebrity with given representative already exists')
-            ->atPath('celebrity')
+            ->buildViolation($constraint->message)
+            ->atPath($constraint->atPath ?? 'celebrity')
             ->addViolation()
         ;
     }

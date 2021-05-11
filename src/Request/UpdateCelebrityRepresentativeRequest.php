@@ -2,12 +2,28 @@
 
 namespace App\Request;
 
+use App\Entity\Celebrity;
+use App\Entity\Representative;
 use App\Enum\RepresentativeType;
 use JMS\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class UpdateCelebrityRepresentativeRequest
 {
+    /**
+     * @Serializer\Type(Celebrity::class)
+     *
+     * @var Celebrity|null
+     */
+    private ?Celebrity $celebrity = null;
+
+    /**
+     * @Serializer\Type(Representative::class)
+     *
+     * @var Representative|null
+     */
+    private ?Representative $representative = null;
+
     /**
      * @Assert\Type(type="array")
      * @Assert\Count(min=1, max=3)
@@ -21,6 +37,38 @@ class UpdateCelebrityRepresentativeRequest
      * @var array|null
      */
     private ?array $types = null;
+
+    /**
+     * @return Celebrity|null
+     */
+    public function getCelebrity(): ?Celebrity
+    {
+        return $this->celebrity;
+    }
+
+    /**
+     * @param Celebrity|null $celebrity
+     */
+    public function setCelebrity(?Celebrity $celebrity): void
+    {
+        $this->celebrity = $celebrity;
+    }
+
+    /**
+     * @return Representative|null
+     */
+    public function getRepresentative(): ?Representative
+    {
+        return $this->representative;
+    }
+
+    /**
+     * @param Representative|null $representative
+     */
+    public function setRepresentative(?Representative $representative): void
+    {
+        $this->representative = $representative;
+    }
 
     /**
      * @return array|null

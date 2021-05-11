@@ -3,11 +3,6 @@
 namespace App\Model;
 
 use App\Enum\LogType;
-use App\Model\CelebrityInterface;
-use App\Model\EntityInterface;
-use App\Model\RepresentativeInterface;
-use DateTimeImmutable;
-use Ramsey\Uuid\UuidInterface;
 
 class LogEntry
 {
@@ -29,6 +24,10 @@ class LogEntry
 
         if ($this->entity instanceof RepresentativeInterface) {
             return LogType::REPRESENTATIVE_UPDATE();
+        }
+
+        if ($this->entity instanceof CelebrityRepresentativeInterface) {
+            return LogType::CELEBRITY_REPRESENTATIVE_UPDATE();
         }
 
         return null;
