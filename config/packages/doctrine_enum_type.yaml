@@ -1,3 +1,4 @@
 danaki_doctrine_enum_type:
     types:
+        App\Enum\LogType: ~
         App\Enum\RepresentativeType: ~
