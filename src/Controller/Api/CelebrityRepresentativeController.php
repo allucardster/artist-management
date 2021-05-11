@@ -3,6 +3,7 @@
 namespace App\Controller\Api;
 
 use App\Entity\CelebrityRepresentative;
+use App\Enum\RepresentativeType;
 use App\Pagination\PaginationQuery;
 use App\Pagination\PaginationResult;
 use App\Repository\CelebrityRepresentativeRepository;
@@ -120,5 +121,16 @@ class CelebrityRepresentativeController
         CelebrityRepresentativeRepository $repository
     ): PaginationResult {
         return PaginationResult::createFrom($repository, $paginationQuery);
+    }
+
+    /**
+     * @Rest\Get("/types")
+     * @Rest\View()
+     *
+     * @return array
+     */
+    public function types(): array
+    {
+        return array_values(RepresentativeType::toArray());
     }
 }
