@@ -8,6 +8,8 @@ services:
       - POSTGRES_DB=${DB_NAME}
     ports:
       - '${DB_PORT}:5432'
+    volumes:
+      - 'postgres_data:/var/lib/postgresql/data'
   php:
     build:
       context: .
@@ -15,6 +17,8 @@ services:
     restart: on-failure
     volumes:
       - './:/opt/app'
+      - 'app_vendor:/opt/app/vendor'
+      - 'app_jwt:/opt/app/config/jwt'
     depends_on:
       - db
   server:
@@ -26,3 +30,8 @@ services:
       - '${APP_PORT}:80'
     depends_on:
       - php
+
+volumes:
+  postgres_data:
+  app_vendor:
+  app_jwt:
