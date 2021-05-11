@@ -34,7 +34,22 @@ Development Setup
 ```sh
 :~$ make jwt-generate-keypair
 ```
+- The following are the user information to `login` and test the api (`Security section at API docs`)
+```
+-----------------------------------------------------
+ROLE_ADMIN
+-----------------------------------------------------
+username: admin
+password: admin
+-----------------------------------------------------
 
+-----------------------------------------------------
+ROLE_USER
+-----------------------------------------------------
+username: user_1, user_2, user_3
+password: passwd123
+-----------------------------------------------------
+```
 Documentation
 =============
 - [API Docs](https://documenter.getpostman.com/view/5093068/TzRShTC2)

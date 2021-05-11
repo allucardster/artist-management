@@ -11,10 +11,10 @@ security:
                         password: '$argon2id$v=19$m=65536,t=4,p=1$YD1lBMZDmvhmrbND5NAJIg$Ajom79QxziYqx28o5Sy8oRQ2oNZhlsOBNhygoLyKRD0'
                         roles: ['ROLE_USER']
                     user_2:
-                        password: '$argon2id$v=19$m=65536,t=4,p=1$udKur5CenYy6fETbkf0Ifw$XtBNgeZS4/Vt+iMnDP9P496tuT4vBZL3WRdW0XC+Gps'
+                        password: '$argon2id$v=19$m=65536,t=4,p=1$YD1lBMZDmvhmrbND5NAJIg$Ajom79QxziYqx28o5Sy8oRQ2oNZhlsOBNhygoLyKRD0'
                         roles: ['ROLE_USER']
                     user_3:
-                        password: '$argon2id$v=19$m=65536,t=4,p=1$t5aQZsSucHJYEOFvQt47sw$U+oV+Bgc/v070Kruu18HlptDX9rHrpYTlIVPOpYpMvo'
+                        password: '$argon2id$v=19$m=65536,t=4,p=1$YD1lBMZDmvhmrbND5NAJIg$Ajom79QxziYqx28o5Sy8oRQ2oNZhlsOBNhygoLyKRD0'
                         roles: ['ROLE_USER']
     encoders:
         # this internal class is used by Symfony to represent in-memory users
