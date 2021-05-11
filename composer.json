@@ -16,6 +16,7 @@
         "friendsofsymfony/rest-bundle": "^3.0",
         "jms/serializer-bundle": "^3.9",
         "lexik/jwt-authentication-bundle": "^2.11",
+        "nelmio/cors-bundle": "^2.1",
         "ramsey/uuid-doctrine": "^1.6",
         "sensio/framework-extra-bundle": "^6.1",
         "symfony/console": "4.4.*",
