@@ -5,9 +5,9 @@ namespace App\Request;
 use App\Entity\Celebrity;
 use App\Entity\Representative;
 use App\Enum\RepresentativeType;
+use App\Validator\Constraints\UniqueCelebrityRepresentative;
 use JMS\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
-use App\Validator\Constraints\UniqueCelebrityRepresentative;
 
 /**
  * Class CreateCelebrityRepresentativeRequest

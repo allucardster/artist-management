@@ -6,6 +6,7 @@ use App\Entity\CelebrityRepresentative;
 use App\Request\CreateCelebrityRepresentativeRequest;
 use App\Request\UpdateCelebrityRepresentativeRequest;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
@@ -42,9 +43,21 @@ class CelebrityRepresentativeRepository extends ServiceEntityRepository
      * @return CelebrityRepresentative
      * @throws ORMException
      * @throws OptimisticLockException
+     * @throws UniqueConstraintViolationException
      */
-    public function update(UpdateCelebrityRepresentativeRequest $request, CelebrityRepresentative $celebrityRepresentative)
-    {
+    public function update(
+        UpdateCelebrityRepresentativeRequest $request,
+        CelebrityRepresentative $celebrityRepresentative
+    ): CelebrityRepresentative {
+
+        if ($celebrity = $request->getCelebrity()) {
+            $celebrityRepresentative->setCelebrity($celebrity);
+        }
+
+        if ($representative = $request->getRepresentative()) {
+            $celebrityRepresentative->setRepresentative($representative);
+        }
+
         if ($request->getTypes() !== null) {
             $celebrityRepresentative->setTypes($request->getTypes());
         }

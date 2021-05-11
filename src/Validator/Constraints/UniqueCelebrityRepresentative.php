@@ -15,6 +15,9 @@ use Symfony\Component\Validator\Constraint;
  */
 class UniqueCelebrityRepresentative extends Constraint
 {
+    public string $message = 'A celebrity with given representative already exists';
+    public ?string $atPath = null;
+
     public function getTargets()
     {
         return self::CLASS_CONSTRAINT;

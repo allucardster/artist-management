@@ -9,6 +9,8 @@ use App\Pagination\PaginationResult;
 use App\Repository\CelebrityRepresentativeRepository;
 use App\Request\CreateCelebrityRepresentativeRequest;
 use App\Request\UpdateCelebrityRepresentativeRequest;
+use App\Validator\Constraints\UniqueCelebrityRepresentative;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -85,7 +87,17 @@ class CelebrityRepresentativeController
             return View::create($constraintViolationList, Response::HTTP_BAD_REQUEST);
         }
 
-        $repository->update($request, $celebrityRepresentative);
+        try {
+            $repository->update($request, $celebrityRepresentative);
+        } catch (UniqueConstraintViolationException $e) {
+            return View::create(
+                [
+                    'property_path' => 'celebrity_representative',
+                    'message' => 'Celebrity and Representative relation already exists'
+                ],
+                Response::HTTP_BAD_REQUEST
+            );
+        }
 
         return View::create(null, Response::HTTP_NO_CONTENT);
     }
