@@ -50,6 +50,8 @@ username: user_1, user_2, user_3
 password: passwd123
 -----------------------------------------------------
 ```
+- For user interface use [artist-management-ui](https://github.com/allucardster/artist-management-ui)
+
 Documentation
 =============
 - [API Docs](https://documenter.getpostman.com/view/5093068/TzRShTC2)
